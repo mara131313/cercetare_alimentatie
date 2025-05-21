@@ -1,6 +1,8 @@
 from django.core.exceptions import PermissionDenied
 from django.shortcuts import render, redirect
 from core.forms import ProductieFermaForm, ProductieFabricaForm, TestCalitateFabricaForm, TestCalitateFermaForm
+from users.utils import log_actiune
+
 
 def adauga_productie_ferma(request):
     if not (request.user.is_superuser or request.user.adauga_produse_alimente or request.user.rol == 'admin'):
@@ -9,6 +11,8 @@ def adauga_productie_ferma(request):
         form = ProductieFermaForm(request.POST)
         if form.is_valid():
             form.save()
+            user = request.user
+            log_actiune(request.user, f"{user.username} a adaugat un aliment.")
             return redirect('success')  # pagina de confirmare
     else:
         form = ProductieFermaForm()
@@ -22,6 +26,8 @@ def adauga_productie_fabrica(request):
         form = ProductieFabricaForm(request.POST)
         if form.is_valid():
             form.save()
+            user = request.user
+            log_actiune(request.user, f"{user.username} a adaugat un produs.")
             return redirect('success')
     else:
         form = ProductieFabricaForm()
@@ -35,6 +41,8 @@ def adauga_test_calitate_fabrica(request):
         form = TestCalitateFabricaForm(request.POST)
         if form.is_valid():
             form.save()
+            user = request.user
+            log_actiune(request.user, f"{user.username} a creat un test de calitate pentru o fabrică.")
             return redirect('success')
     else:
         form = TestCalitateFabricaForm()
@@ -48,6 +56,8 @@ def adauga_test_calitate_ferma(request):
         form = TestCalitateFermaForm(request.POST)
         if form.is_valid():
             form.save()
+            user = request.user
+            log_actiune(request.user, f"{user.username} a creat un test de calitate pentru o fermă.")
             return redirect('success')
     else:
         form = TestCalitateFermaForm()

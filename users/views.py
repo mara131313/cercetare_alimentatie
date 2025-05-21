@@ -3,8 +3,12 @@ from django.contrib.auth import authenticate, login, logout
 from .forms import CustomUserCreationForm
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required, user_passes_test
-from .models import Utilizator
+from .models import Utilizator, AuditLog
+from .utils import log_actiune
+from django.contrib.admin.views.decorators import staff_member_required
+from django.db.models import Q
 
+# View - uri pentru conectare : pagina de inceput, pagina pentru creerea contului, pagina pentru logare in cont ; si deconectare
 def startup_view(request):
     return render(request, 'registration/startup.html')
 
@@ -41,9 +45,9 @@ def home_view(request):
     return render(request, 'home.html')
 
 
+# View
 def este_admin(user):
     return user.rol == 'admin' or user.is_superuser
-
 @user_passes_test(este_admin)
 def gestionare_view(request):
     utilizatori = Utilizator.objects.exclude(id=request.user.id)
@@ -66,7 +70,24 @@ def gestionare_view(request):
             user.vede_teste = "vede_teste" in request.POST
             user.face_teste = "face_teste" in request.POST
             user.save()
+            log_actiune(request.user, f"A modificat permisiunile lui {user.username}")
 
-        return redirect("gestioneaza_utilizatori")
+        return redirect("gestionare_utilizator")
 
     return render(request, "core/gestioneaza.html", {"utilizatori": utilizatori})
+
+
+@staff_member_required
+def audit_view(request):
+    query = request.GET.get("q", "")
+    logs = AuditLog.objects.all()
+
+    if query:
+        logs = logs.filter(
+            Q(actiune__icontains=query) |
+            Q(user__username__icontains=query)
+        )
+
+    logs = logs.order_by("-timestamp")[:100]  # cele mai recente 100
+
+    return render(request, "core/audit_log.html", {"logs": logs, "query": query})
