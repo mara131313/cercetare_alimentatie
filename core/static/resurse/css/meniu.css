@@ -1,0 +1,37 @@
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background-color: var(--c3);
+  margin: 0;
+  padding: 0;
+}
+
+nav {
+  background-color: var(--c8);
+  padding: 1em;
+}
+
+.menu {
+  list-style: none;
+  display: flex;
+  justify-content: space-around;
+  margin: 0;
+  padding: 0;
+}
+
+.menu li a {
+  color: var(--c3);
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.menu li a:hover {
+  text-decoration: underline;
+}
+
+.content {
+  padding: 2em;
+}
+
+h1 {
+  color: var(--c8);
+}

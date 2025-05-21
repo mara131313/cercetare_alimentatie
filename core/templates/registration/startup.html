@@ -12,13 +12,10 @@
 
         </header>
         <main>
-            <h2>Înregistrare</h2>
-            <form method="post">
-                {% csrf_token %}
-                {{ form.as_p }}
-                <button type="submit">Creează cont</button>
-            </form>
-            <a href="{% url 'login' %}">Ai deja cont?</a>
+            <h2>Bun venit!</h2>
+            <p>Ai deja cont?</p>
+            <a href="{% url 'login' %}">Login</a> |
+            <a href="{% url 'signup' %}">Creează cont</a>
         </main>
         {% include "fragmente/footer.html" %}
     </body>

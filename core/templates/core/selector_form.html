@@ -1,6 +1,24 @@
-<h2>Selectează tipul de date</h2>
-<form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Continuă</button>
-</form>
+<!DOCTYPE html>
+<html lang="ro">
+    <head>
+        <meta name="description" content="Platforma de gestionare a datelor de cercetare in domeniul alimentatiei">
+        <title>Cercetare Alimentație</title>
+
+        {% include "fragmente/head.html" %}
+
+    </head>
+    <body>
+        <header>
+            {% include "fragmente/header.html" %}
+        </header>
+        <main>
+            <h2>Selectează tipul de date</h2>
+            <form method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit">Continuă</button>
+            </form>
+        </main>
+        {% include "fragmente/footer.html" %}
+    </body>
+</html>

@@ -2,9 +2,12 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from .forms import CustomUserCreationForm
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 
-def home_view(request):
-    return render(request, 'home.html')
+
+def startup_view(request):
+    return render(request, 'registration/startup.html')
+
 
 def signup_view(request):
     if request.method == 'POST':
@@ -32,3 +35,7 @@ def login_view(request):
 def logout_view(request):
     logout(request)
     return redirect('home')
+
+@login_required(login_url='login')  # dacă nu e logat, e redirectionat la pagina de login
+def home_view(request):
+    return render(request, 'home.html')

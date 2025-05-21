@@ -1,3 +1,31 @@
-<p>Ai deja cont?</p>
-<a href="{% url 'login' %}">Login</a> |
-<a href="{% url 'signup' %}">Creează cont</a>
+<!DOCTYPE html>
+<html lang="ro">
+    <head>
+        <meta name="description" content="Platforma de gestionare a datelor de cercetare in domeniul alimentatiei">
+        <title>Cercetare Alimentație</title>
+
+        {% include "fragmente/head.html" %}
+
+    </head>
+    <body>
+        <header>
+            {% include "fragmente/header.html" %}
+        </header>
+        <main>
+            <h1>Platforma de Gestionare a Datelor din industria alimentației</h1>
+            <h2><b>Bine ai venit, {{ user.username }}!</b></h2>
+            <p>
+                Această platformă este destinată colectării, gestionării și analizei datelor provenite din ferme și unități de procesare a alimentelor.
+                Scopul nostru este de a sprijini deciziile informate și strategice în domeniul agriculturii și industriei alimentare.
+            </p>
+            <p>
+                Utilizatorii pot adăuga date din teren, pot genera rapoarte detaliate și pot urmări istoricul și tendințele în timp real.
+            </p>
+            <p>
+                Sistemul este proiectat pentru a fi intuitiv, sigur și scalabil, adaptabil nevoilor diferitelor tipuri de utilizatori – de la fermieri, până la analiști de date și autorități de reglementare.
+            </p>
+            <a href="{% url 'logout' %}">Logout</a>
+        </main>
+        {% include "fragmente/footer.html" %}
+    </body>
+</html>
