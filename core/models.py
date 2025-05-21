@@ -50,9 +50,22 @@ class ProductieFabrica(models.Model):
         return f"{self.fabrica.nume} - {self.produs_final} ({self.data_productiei})"
 
 
-class TestCalitate(models.Model):
+class TestCalitateFabrica(models.Model):
     fabrica = models.ForeignKey(Fabrica, on_delete=models.CASCADE)
     produs = models.CharField(max_length=100)
+    data_test = models.DateField()
+    rezultat_microbiologic = models.CharField(max_length=255)
+    valori_nutritionale = models.TextField(help_text="Ex: calorii, proteine, grăsimi")
+    data_expirarii = models.DateField()
+    neconformitati = models.TextField(blank=True)
+
+    def __str__(self):
+        return f"Test: {self.produs} @ {self.data_test}"
+
+
+class TestCalitateFerma(models.Model):
+    ferma = models.ForeignKey(Ferma, on_delete=models.CASCADE)
+    aliment = models.CharField(max_length=100)
     data_testului = models.DateField()
     rezultat_microbiologic = models.CharField(max_length=255)
     valori_nutritionale = models.TextField(help_text="Ex: calorii, proteine, grăsimi")
@@ -60,4 +73,4 @@ class TestCalitate(models.Model):
     neconformitati = models.TextField(blank=True)
 
     def __str__(self):
-        return f"Test: {self.produs} @ {self.data_testului}"
+        return f"Test: {self.aliment} @ {self.data_testului}"

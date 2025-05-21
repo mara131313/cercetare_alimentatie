@@ -14,7 +14,9 @@ def selector_view(request):
             elif tip_sursa == 'fabrica' and tip_date == 'productie':
                 return redirect('adauga_productie_fabrica')
             elif tip_sursa == 'fabrica' and tip_date == 'test_calitate':
-                return redirect('adauga_test_calitate')
+                return redirect('adauga_test_calitate_fabrica')
+            elif tip_sursa == 'ferma' and tip_date == 'test_calitate':
+                return redirect('adauga_test_calitate_ferma')
     else:
         form = SelectorForm()
     return render(request, 'core/selector_form.html', {'form': form})

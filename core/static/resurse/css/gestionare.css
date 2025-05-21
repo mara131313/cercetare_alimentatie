@@ -1,0 +1,53 @@
+.utilizatori-container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.utilizator-box {
+    border: 2px solid var(--c4);
+    border-radius: 10px;
+    margin-bottom: 15px;
+    background-color: var(--c3);
+    box-shadow: 0 0 10px rgba(0, 128, 0, 0.1);
+    overflow: hidden;
+}
+
+.utilizator-box summary {
+    padding: 15px;
+    cursor: pointer;
+    background-color: var(--c10);
+    font-weight: bold;
+    list-style: none;
+    border-radius: 10px 10px 0 0;
+}
+
+.utilizator-box[open] summary {
+    border-bottom: 1px solid var(--c4);
+}
+
+.utilizator-detalii {
+    padding: 15px;
+}
+
+.permisii label {
+    display: block;
+    margin: 6px 0;
+}
+
+.actiuni {
+    margin-top: 15px;
+}
+
+.actiuni button {
+    margin-right: 10px;
+    padding: 6px 12px;
+    border: none;
+    border-radius: 5px;
+    background-color: var(--c4);
+    color: var(--c3);
+    cursor: pointer;
+}
+
+.actiuni button:hover {
+    background-color: var(--c9);
+}

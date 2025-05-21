@@ -1,5 +1,5 @@
 from django import forms
-from .models import ProductieFerma, ProductieFabrica, TestCalitate
+from .models import ProductieFerma, ProductieFabrica, TestCalitateFabrica, TestCalitateFerma
 
 class ProductieFermaForm(forms.ModelForm):
     class Meta:
@@ -23,13 +23,26 @@ class ProductieFabricaForm(forms.ModelForm):
             'cantitate_kg': 'Cantitate (kg)',
         }
 
-class TestCalitateForm(forms.ModelForm):
+class TestCalitateFabricaForm(forms.ModelForm):
     class Meta:
-        model = TestCalitate
+        model = TestCalitateFabrica
         fields = '__all__'
         labels = {
             'fabrica': 'Fabrică',
             'produs': 'Produs',
+            'data_testului': 'Data testului',
+            'rezultat_microbiologic': 'Rezultat microbiologic',
+            'valori_nutritionale': 'Valori nutriționale',
+            'data_expirarii': 'Data expirării',
+        }
+
+class TestCalitateFermaForm(forms.ModelForm):
+    class Meta:
+        model = TestCalitateFerma
+        fields = '__all__'
+        labels = {
+            'ferma': 'Fermă',
+            'aliment': 'Aliment',
             'data_testului': 'Data testului',
             'rezultat_microbiologic': 'Rezultat microbiologic',
             'valori_nutritionale': 'Valori nutriționale',
