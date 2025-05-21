@@ -9,7 +9,7 @@ def adauga_productie_ferma(request):
             return redirect('success')  # pagina de confirmare
     else:
         form = ProductieFermaForm()
-    return render(request, 'formular_general.html', {'form': form, 'titlu': 'Adaugă Producție Fermă'})
+    return render(request, 'core/formular_general.html', {'form': form, 'titlu': 'Adaugă Producție Fermă'})
 
 
 def adauga_productie_fabrica(request):
@@ -20,7 +20,7 @@ def adauga_productie_fabrica(request):
             return redirect('success')
     else:
         form = ProductieFabricaForm()
-    return render(request, 'formular_general.html', {'form': form, 'titlu': 'Adaugă Producție Fabrică'})
+    return render(request, 'core/formular_general.html', {'form': form, 'titlu': 'Adaugă Producție Fabrică'})
 
 
 def adauga_test_calitate(request):
@@ -31,4 +31,4 @@ def adauga_test_calitate(request):
             return redirect('success')
     else:
         form = TestCalitateForm()
-    return render(request, 'formular_general.html', {'form': form, 'titlu': 'Adaugă Test Calitate'})
+    return render(request, 'core/formular_general.html', {'form': form, 'titlu': 'Adaugă Test Calitate'})

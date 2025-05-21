@@ -1,0 +1,12 @@
+<h2>Autentificare</h2>
+<form method="post">
+    {% csrf_token %}
+    <label>Username:
+        <input type="text" name="username">
+    </label>
+    <label>Parolă:
+        <input type="password" name="password">
+    </label>
+    <button type="submit">Login</button>
+</form>
+<a href="{% url 'signup' %}">Nu ai cont? Creează unul!</a>

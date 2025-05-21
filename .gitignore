@@ -1,0 +1,20 @@
+# Python/Django
+*.pyc
+__pycache__/
+*.pyo
+*.pyd
+.env
+.venv/
+media/
+staticfiles/
+
+# Node/React
+node_modules/
+build/
+dist/
+
+# PyCharm 
+.idea/
+
+# Fișiere de sistem
+Thumbs.db

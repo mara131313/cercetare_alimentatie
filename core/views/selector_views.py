@@ -17,4 +17,4 @@ def selector_view(request):
                 return redirect('adauga_test_calitate')
     else:
         form = SelectorForm()
-    return render(request, 'selector_form.html', {'form': form})
+    return render(request, 'core/selector_form.html', {'form': form})

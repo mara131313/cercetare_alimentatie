@@ -1,8 +1,3 @@
-<!DOCTYPE html>
-<html lang="ro">
-<head><title>Pagina principală</title></head>
-<body>
-  <h2>Bun venit, {{ user.username }}!</h2>
-  <a href="{% url 'logout' %}">Logout</a>
-</body>
-</html>
+<p>Ai deja cont?</p>
+<a href="{% url 'login' %}">Login</a> |
+<a href="{% url 'signup' %}">Creează cont</a>
