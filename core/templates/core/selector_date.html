@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="ro">
+    <head>
+        <meta name="description" content="Platforma de gestionare a datelor de cercetare in domeniul alimentatiei">
+        <title>Cercetare Alimentație</title>
+
+        {% include "fragmente/head.html" %}
+
+    </head>
+    <body>
+        <header>
+            {% include "fragmente/header.html" %}
+        </header>
+        <main>
+            <h1>Selectează acțiunea</h1>
+
+            <form method="post">
+                {% csrf_token %}
+                <button type="submit" name="actiune" value="vezi">Vezi date</button>
+                <button type="submit" name="actiune" value="adauga">Adaugă date</button>
+            </form>
+        </main>
+        {% include "fragmente/footer.html" %}
+    </body>
+</html>

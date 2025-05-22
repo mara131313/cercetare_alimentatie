@@ -2,6 +2,7 @@ from django.core.exceptions import PermissionDenied
 from django.shortcuts import render, redirect
 from core.forms import ProductieFermaForm, ProductieFabricaForm, TestCalitateFabricaForm, TestCalitateFermaForm
 from users.utils import log_actiune
+from core.models import Ferma, Fabrica, ProductieFerma, ProductieFabrica, TestCalitateFerma, TestCalitateFabrica
 
 
 def adauga_productie_ferma(request):
@@ -62,3 +63,15 @@ def adauga_test_calitate_ferma(request):
     else:
         form = TestCalitateFermaForm()
     return render(request, 'core/formular_general.html', {'form': form, 'titlu': 'Adaugă Test Calitate Ferma'})
+
+
+def vizualizare_date(request):
+    context = {
+        "ferme": Ferma.objects.all(),
+        "fabrici": Fabrica.objects.all(),
+        "productii_ferma": ProductieFerma.objects.all(),
+        "productii_fabrica": ProductieFabrica.objects.all(),
+        "teste_ferma": TestCalitateFerma.objects.all(),
+        "teste_fabrica": TestCalitateFabrica.objects.all(),
+    }
+    return render(request, "core/vizualizare_date.html", context)

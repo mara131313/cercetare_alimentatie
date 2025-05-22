@@ -20,3 +20,13 @@ def selector_view(request):
     else:
         form = SelectorForm()
     return render(request, 'core/selector_form.html', {'form': form})
+
+
+def selector_date(request):
+    if request.method == "POST":
+        actiune = request.POST.get("actiune")
+        if actiune == "vezi":
+            return redirect("vizualizare_date")
+        elif actiune == "adauga":
+            return redirect("selector")
+    return render(request, "core/selector_date.html")

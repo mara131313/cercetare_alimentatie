@@ -1,0 +1,87 @@
+body {
+    background-color: var(--c1);
+    font-family: "Segoe UI", sans-serif;
+    color: var(--c8);
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 1000px;
+    margin: 40px auto;
+    padding: 30px;
+    background-color: var(--c3);
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.container h1 {
+    text-align: center;
+    color: var(--c5);
+    margin-bottom: 40px;
+}
+
+.container h2 {
+    color: var(--c2);
+    border-bottom: 2px solid var(--c6);
+    padding-bottom: 5px;
+    margin-top: 40px;
+}
+
+.container ul {
+    list-style: none;
+    padding: 0;
+    margin-top: 15px;
+}
+
+.container li {
+    background-color: var(--c10);
+    border-left: 6px solid var(--c9);
+    margin-bottom: 10px;
+    padding: 10px 15px;
+    border-radius: 8px;
+    transition: background 0.2s ease;
+}
+
+.container li:hover {
+    background-color: var(--c6);
+    color: var(--c7);
+}
+
+.navigare-modele {
+    background-color: var(--c10);
+    border: 2px solid var(--c4);
+    border-radius: 10px;
+    padding: 1em;
+    margin-bottom: 2em;
+    text-align: center;
+}
+
+.navigare-modele h3 {
+    margin-top: 0;
+    color: var(--c5);
+}
+
+.navigare-modele ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1em;
+}
+
+.navigare-modele li a {
+    color: var(--c5);
+    text-decoration: none;
+    font-weight: bold;
+    padding: 0.3em 0.7em;
+    border: 1px solid var(--c5);
+    border-radius: 5px;
+    background-color: var(--c4);
+    transition: background-color 0.3s;
+}
+
+.navigare-modele li a:hover {
+    background-color: var(--c6);
+}
