@@ -26,7 +26,6 @@
                             {% csrf_token %}
                             <input type="hidden" name="user_id" value="{{ user.id }}">
                             <div class="permisii">
-                                <label><input type="checkbox" name="vede_rapoarte" {% if user.vede_rapoarte %}checked{% endif %}> Vede rapoarte</label>
                                 <label><input type="checkbox" name="face_rapoarte" {% if user.face_rapoarte %}checked{% endif %}> Creează rapoarte</label>
                                 <label><input type="checkbox" name="vede_produse_alimente" {% if user.vede_produse_alimente %}checked{% endif %}> Vede produse și alimente</label>
                                 <label><input type="checkbox" name="adauga_produse_alimente" {% if user.adauga_produse_alimente %}checked{% endif %}> Adaugă produse și alimente</label>

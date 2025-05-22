@@ -6,7 +6,6 @@ from django.shortcuts import render
 def profil_view(request):
     utilizator = request.user
     permisiuni = {
-        "Poate vedea rapoarte": utilizator.vede_rapoarte,
         "Poate genera rapoarte": utilizator.face_rapoarte,
         "Poate vedea produse/alimente": utilizator.vede_produse_alimente,
         "Poate adăuga produse/alimente": utilizator.adauga_produse_alimente,

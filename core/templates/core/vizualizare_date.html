@@ -16,70 +16,77 @@
             <nav class="navigare-modele">
                 <h3>Salt rapid la secțiune:</h3>
                 <ul>
-                    <li><a href="#ferme">Ferme</a></li>
-                    <li><a href="#fabrici">Fabrici</a></li>
-                    <li><a href="#productie-ferme">Producție Ferme</a></li>
-                    <li><a href="#productie-fabrici">Producție Fabrici</a></li>
-                    <li><a href="#teste-ferme">Teste Calitate Ferme</a></li>
-                    <li><a href="#teste-fabrici">Teste Calitate Fabrici</a></li>
+                    {% if user.vede_produse_alimente %}
+                        <li><a href="#ferme">Ferme</a></li>
+                        <li><a href="#fabrici">Fabrici</a></li>
+                        <li><a href="#productie-ferme">Producție Ferme</a></li>
+                        <li><a href="#productie-fabrici">Producție Fabrici</a></li>
+                    {% endif %}
+                    {% if user.vede_teste %}
+                        <li><a href="#teste-ferme">Teste Calitate Ferme</a></li>
+                        <li><a href="#teste-fabrici">Teste Calitate Fabrici</a></li>
+                    {% endif %}
                 </ul>
             </nav>
             <div class="container">
                 <h1>Vizualizare date</h1>
+                {% if user.vede_produse_alimente %}
+                    <h2 id="ferme">Ferme</h2>
+                    <ul class="vizualizare">
+                        {% for ferma in ferme %}
+                            <li>{{ ferma }}</li>
+                        {% empty %}
+                            <li>Nu există ferme înregistrate.</li>
+                        {% endfor %}
+                    </ul>
 
-                <h2 id="ferme">Ferme</h2>
-                <ul class="vizualizare">
-                    {% for ferma in ferme %}
-                        <li>{{ ferma }}</li>
-                    {% empty %}
-                        <li>Nu există ferme înregistrate.</li>
-                    {% endfor %}
-                </ul>
+                    <h2 id="fabrici">Fabrici</h2>
+                    <ul>
+                        {% for fabrica in fabrici %}
+                            <li>{{ fabrica }}</li>
+                        {% empty %}
+                            <li>Nu există fabrici înregistrate.</li>
+                        {% endfor %}
+                    </ul>
 
-                <h2 id="fabrici">Fabrici</h2>
-                <ul>
-                    {% for fabrica in fabrici %}
-                        <li>{{ fabrica }}</li>
-                    {% empty %}
-                        <li>Nu există fabrici înregistrate.</li>
-                    {% endfor %}
-                </ul>
+                    <h2 id="productie-ferme">Producție Ferme</h2>
+                    <ul>
+                        {% for p in productii_ferma %}
+                            <li>{{ p }}</li>
+                        {% empty %}
+                            <li>Nu există date.</li>
+                        {% endfor %}
+                    </ul>
 
-                <h2 id="productie-ferme">Producție Ferme</h2>
-                <ul>
-                    {% for p in productii_ferma %}
-                        <li>{{ p }}</li>
-                    {% empty %}
-                        <li>Nu există date.</li>
-                    {% endfor %}
-                </ul>
+                    <h2 id="productie-fabrici">Producție Fabrici</h2>
+                    <ul>
+                        {% for p in productii_fabrica %}
+                            <li>{{ p }}</li>
+                        {% empty %}
+                            <li>Nu există date.</li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
 
-                <h2 id="productie-fabrici">Producție Fabrici</h2>
-                <ul>
-                    {% for p in productii_fabrica %}
-                        <li>{{ p }}</li>
-                    {% empty %}
-                        <li>Nu există date.</li>
-                    {% endfor %}
-                </ul>
+                {% if user.vede_teste %}
+                    <h2 id="teste-ferme">Teste Calitate Ferme</h2>
+                    <ul>
+                        {% for t in teste_ferma %}
+                            <li>{{ t }}</li>
+                        {% empty %}
+                            <li>Nu există date.</li>
+                        {% endfor %}
+                    </ul>
 
-                <h2 id="teste-ferme">Teste Calitate Ferme</h2>
-                <ul>
-                    {% for t in teste_ferma %}
-                        <li>{{ t }}</li>
-                    {% empty %}
-                        <li>Nu există date.</li>
-                    {% endfor %}
-                </ul>
-
-                <h2 id="teste-fabrici">Teste Calitate Fabrici</h2>
-                <ul>
-                    {% for t in teste_fabrica %}
-                        <li>{{ t }}</li>
-                    {% empty %}
-                        <li>Nu există date.</li>
-                    {% endfor %}
-                </ul>
+                    <h2 id="teste-fabrici">Teste Calitate Fabrici</h2>
+                    <ul>
+                        {% for t in teste_fabrica %}
+                            <li>{{ t }}</li>
+                        {% empty %}
+                            <li>Nu există date.</li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
             </div>
         </main>
         {% include "fragmente/footer.html" %}

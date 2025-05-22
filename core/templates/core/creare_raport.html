@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="ro">
     <head>
@@ -5,14 +6,20 @@
         <title>Cercetare Alimentație</title>
 
         {% include "fragmente/head.html" %}
-
+        <link rel="stylesheet" href="{% static 'resurse/css/raport.css' %}">
     </head>
     <body>
         <header>
             {% include "fragmente/header.html" %}
         </header>
         <main>
-
+            {% if messages %}
+                <ul class="mesaje">
+                    {% for message in messages %}
+                        <li class="{{ message.tags }}">{{ message }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
             <form method="post">
                 {% csrf_token %}
                 <label for="tip_raport">Tip raport:</label>

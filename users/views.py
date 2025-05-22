@@ -22,6 +22,7 @@ def signup_view(request):
             return redirect('home')
     else:
         form = CustomUserCreationForm()
+        messages.error(request, 'Datele introduse nu sunt corecte.')
     return render(request, 'registration/signup.html', {'form': form})
 
 
@@ -48,11 +49,12 @@ def home_view(request):
     return render(request, 'home.html')
 
 
-# View pentru gestionarea utilizatorilor
 def este_admin(user):
     return user.rol == 'admin' or user.is_superuser
+# View pentru gestionarea utilizatorilor
 @user_passes_test(este_admin)
 def gestionare_view(request):
+    # Se acceseaza toti utilizatorii in afara de cel conectat la pagina
     utilizatori = Utilizator.objects.exclude(id=request.user.id)
 
     if request.method == "POST":
@@ -63,11 +65,16 @@ def gestionare_view(request):
         if actiune == "sterge":
             user.delete()
         elif actiune == "promoveaza":
+            #daca user ul e promovat la admin, primeste toate rolurile
             user.rol = 'admin'
+            user.face_rapoarte = True
+            user.vede_produse_alimente = True
+            user.adauga_produse_alimente = True
+            user.vede_teste = True
+            user.face_teste = True
             user.save()
         elif actiune == "update_permisii":
-            # Daca
-            user.vede_rapoarte = "vede_rapoarte" in request.POST
+            # Atribuie valoarea pe care o da administratorul
             user.face_rapoarte = "face_rapoarte" in request.POST
             user.vede_produse_alimente = "vede_produse_alimente" in request.POST
             user.adauga_produse_alimente = "adauga_produse_alimente" in request.POST
@@ -82,11 +89,10 @@ def gestionare_view(request):
 
 
 # View pentru accesarea paginii in care vor fi vazute activitatile utilizatorilor
-@staff_member_required
 def audit_view(request):
     query = request.GET.get("q", "")
     logs = AuditLog.objects.all()
-
+# verifica daca gaseste log-uri in care sa fie incluse username sau actiune
     if query:
         logs = logs.filter(
             Q(actiune__icontains=query) |

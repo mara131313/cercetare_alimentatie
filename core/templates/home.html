@@ -12,21 +12,46 @@
             {% include "fragmente/header.html" %}
         </header>
         <main>
-            <h1>Platforma de Gestionare a Datelor din industria alimentației</h1>
+            <h1 style="text-align: center">Platforma de Gestionare a Datelor din industria alimentației</h1>
             <h2><b>Bine ai venit, {{ user.username }}!</b></h2>
             <p>
                 Această platformă este destinată colectării, gestionării și analizei datelor provenite din ferme și unități de procesare a alimentelor.
                 Scopul nostru este de a sprijini deciziile informate și strategice în domeniul agriculturii și industriei alimentare.
             </p>
             <p>
-                Utilizatorii pot adăuga date din teren, pot genera rapoarte detaliate și pot urmări istoricul și tendințele în timp real.
+                Utilizatorii pot adăuga date din teren, pot genera rapoarte detaliate și pot urmări istoricul și tendințele în timp real, în funcție de rolurile pe care le dețin.
             </p>
             <p>
                 Sistemul este proiectat pentru a fi intuitiv, sigur și scalabil, adaptabil nevoilor diferitelor tipuri de utilizatori – de la fermieri, până la analiști de date și autorități de reglementare.
             </p>
             <h3> Ce poți accesa?</h3>
+            <ul>
+                <li><a href="{% url 'profil_utilizator' %}">Profilul tău</a> – vezi informațiile personale și permisiunile</li>
+                <li><a href="{% url 'creare_raport' %}">Rapoarte</a> – generează rapoarte pe baza datelor introduse</li>
+                <li><a href="{% url 'selector_date' %}">Date</a> – accesează și adaugă date pentru analiză</li>
+                {% if user.is_superuser or user.rol == 'admin' %}
+                <li><a href="{% url 'gestionare_utilizator' %}">Gestionare utilizatori</a> – administrează accesul celorlalți</li>
+                {% endif %}
+            </ul>
+
+            <h3>Scurt ghid de utilizare</h3>
+            <ol>
+                <li>Introdu date din teren prin secțiunea <a href="{% url 'selector' %}">Date</a></li>
+                <li>Verifică dacă datele sunt corecte</li>
+                <li>Generează rapoarte în formate diferite pentru a analiza informațiile</li>
+                <li>Distribuie rezultatele colegilor sau superiorilor</li>
+            </ol>
+
+            <h3>Link-uri utile</h3>
             <p>
-                Pentru a vedea detalii despre utilizatorul tău, intră pe profilul tau <a href="{% url 'profil_utilizator' %}"> aici</a>!
+                • <a href="https://www.madr.ro/">Ministerul Agriculturii</a><br>
+                • <a href="https://ec.europa.eu/info/index_ro">Comisia Europeană – Politici Alimentare</a><br>
+                • <a href="https://www.insse.ro/">Institutul Național de Statistică</a>
+            </p>
+
+            <h3>Ai feedback?</h3>
+            <p>
+                Dacă ai întâmpinat probleme sau ai sugestii de îmbunătățire, te rugăm să ne scrii la <a href="mailto:cercetareAlimentatie@gmail.com">cercetareAlimentatie@gmail.com</a>.
             </p>
         </main>
         {% include "fragmente/footer.html" %}

@@ -9,7 +9,6 @@ class Utilizator(AbstractUser):
     rol = models.CharField(max_length=10, choices=ROL, default='user')
 
     #PERMISIUNI
-    vede_rapoarte = models.BooleanField(default=True)
     face_rapoarte = models.BooleanField(default=True)
     vede_produse_alimente = models.BooleanField(default=False)
     adauga_produse_alimente = models.BooleanField(default=False)
