@@ -145,6 +145,6 @@ EMAIL_USE_TLS = True
 
 EMAIL_HOST_USER = 'mara.amv13@gmail.com'
 
-EMAIL_HOST_PASSWORD = 'bwkd scaq jnjw gazy'
+EMAIL_HOST_PASSWORD = ''
 
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
