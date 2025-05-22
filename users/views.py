@@ -19,7 +19,7 @@ def signup_view(request):
         if form.is_valid():
             user = form.save()
             login(request, user)  # autentifică automat după signup
-            return redirect('home')  # sau altă pagină
+            return redirect('home')
     else:
         form = CustomUserCreationForm()
     return render(request, 'registration/signup.html', {'form': form})
@@ -45,7 +45,7 @@ def home_view(request):
     return render(request, 'home.html')
 
 
-# View
+# View pentru gestionarea utilizatorilor
 def este_admin(user):
     return user.rol == 'admin' or user.is_superuser
 @user_passes_test(este_admin)
@@ -63,6 +63,7 @@ def gestionare_view(request):
             user.rol = 'admin'
             user.save()
         elif actiune == "update_permisii":
+            # Daca
             user.vede_rapoarte = "vede_rapoarte" in request.POST
             user.face_rapoarte = "face_rapoarte" in request.POST
             user.vede_produse_alimente = "vede_produse_alimente" in request.POST

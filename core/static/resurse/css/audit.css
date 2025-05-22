@@ -26,30 +26,3 @@ form button {
 form button:hover {
     background-color: var(--c5);
 }
-
-table {
-    width: 100%;
-    border-collapse: collapse;
-    background-color: var(--c3);
-    border: 1px solid var(--c6);
-    box-shadow: 0 0 8px rgba(0, 0, 0, 0.03);
-}
-
-th, td {
-    text-align: left;
-    padding: 0.75rem;
-    border-bottom: 1px solid var(--c10);
-}
-
-th {
-    background-color: var(--c6);
-    color: var(--c7);
-}
-
-td {
-    color: var(--c8);
-}
-
-tr:hover td {
-    background-color: var(--c10);
-}

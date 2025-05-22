@@ -1,0 +1,38 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ro">
+    <head>
+        <meta charset="UTF-8">
+        <title>Cercetarea Alimentatiei</title>
+        <style>
+            body { font-family: Arial, sans-serif; }
+            table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+            th, td { border: 1px solid #ccc; padding: 8px; text-align: left; }
+            th { background-color: #f5f5f5; }
+        </style>
+    </head>
+    <body>
+        <main>
+        <h1>RAPORT</h1>
+        {% load custom_tags %}
+        <table>
+            <thead>
+                <tr>
+                    {% for col in header %}
+                    <th>{{ col }}</th>
+                    {% endfor %}
+                </tr>
+            </thead>
+            <tbody>
+                {% for row in rows %}
+                <tr>
+                    {% for col in header %}
+                    <td>{{ row|get_item:col }}</td>
+                    {% endfor %}
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        </main>
+    </body>
+</html>

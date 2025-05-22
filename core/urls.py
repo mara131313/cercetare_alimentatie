@@ -18,9 +18,9 @@ urlpatterns = [
     path('test-calitate-fabrica/', adauga_test_calitate_fabrica, name='adauga_test_calitate_fabrica'),
     path('test-calitate-ferma/', adauga_test_calitate_ferma, name='adauga_test_calitate_ferma'),
     path('success/', lambda request: render(request, 'core/success.html'), name='success'),
-    path('creeaza_raport/', raport_view, name='creeaza_raport'),
-    path('profil_utilizator/', selector_view, name='profil_utilizator'),
-    path('gestionare_utilizator/', gestionare_view, name='gestionare_utilizator'),
+    path('raport/', raport_view, name='creare_raport'),
+    path('profil/', selector_view, name='profil_utilizator'),
+    path('gestionare/', gestionare_view, name='gestionare_utilizator'),
     path("audit/", audit_view, name="audit_log"),
 
 ]

@@ -1,7 +1,7 @@
 <nav>
     <ul class="menu">
         <li><a href="{% url 'home' %}">Acasă</a></li>
-        <li><a href="{% url 'creeaza_raport' %}">Creează Rapoarte</a></li>
+        <li><a href="{% url 'creare_raport' %}">Rapoarte</a></li>
         <li><a href="{% url 'selector' %}">Adaugă Date</a></li>
         <li><a href="{% url 'profil_utilizator' %}">Profil Utilizator</a></li>
         {% if user.is_superuser or user.rol == 'admin'%}

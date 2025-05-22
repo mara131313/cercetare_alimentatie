@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ro">
+    <head>
+        <meta name="description" content="Platforma de gestionare a datelor de cercetare in domeniul alimentatiei">
+        <title>Cercetare Alimentație</title>
+
+        {% include "fragmente/head.html" %}
+
+    </head>
+    <body>
+        <header>
+            {% include "fragmente/header.html" %}
+        </header>
+        <main>
+
+            <form method="post">
+                {% csrf_token %}
+                <label for="tip_raport">Tip raport:</label>
+                <select name="tip_raport" id="tip_raport" required>
+                    <option value="ferme">Ferme</option>
+                    <option value="fabrici">Fabrici</option>
+                    <option value="productie_ferme">Producție Ferme</option>
+                    <option value="productie_fabrici">Producție Fabrici</option>
+                    <option value="teste_ferme">Teste Calitate Ferme</option>
+                    <option value="teste_fabrici">Teste Calitate Fabrici</option>
+                </select>
+
+                <label for="data_start">Data de început:
+                    <input type="date" name="data_start">
+                </label>
+
+                <label for="data_end">Data de sfârșit:
+                    <input type="date" name="data_end">
+                </label>
+
+                <label for="format">Format export:
+                    <select name="format" required>
+                        <option value="csv">CSV</option>
+                        <option value="xlsx">Excel</option>
+                        <option value="pdf">PDF</option>
+                    </select>
+                </label>
+
+                <button type="submit">Generează raport</button>
+            </form>
+
+
+        </main>
+        {% include "fragmente/footer.html" %}
+    </body>
+</html>
