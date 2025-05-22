@@ -24,6 +24,7 @@ def signup_view(request):
         form = CustomUserCreationForm()
     return render(request, 'registration/signup.html', {'form': form})
 
+
 def login_view(request):
     if request.method == 'POST':
         username = request.POST.get('username')
@@ -36,9 +37,11 @@ def login_view(request):
             messages.error(request, 'Datele introduse nu sunt corecte.')
     return render(request, 'registration/login.html')
 
+
 def logout_view(request):
     logout(request)
     return redirect('home')
+
 
 @login_required(login_url='login')  # dacă nu e logat, e redirectionat la pagina de login
 def home_view(request):
@@ -78,6 +81,7 @@ def gestionare_view(request):
     return render(request, "core/gestioneaza.html", {"utilizatori": utilizatori})
 
 
+# View pentru accesarea paginii in care vor fi vazute activitatile utilizatorilor
 @staff_member_required
 def audit_view(request):
     query = request.GET.get("q", "")
@@ -96,6 +100,8 @@ def audit_view(request):
 from django.core.mail import send_mail
 from django.http import HttpResponse
 
+
+#testarea trimiterii mail-ului
 def test_email(request):
     send_mail(
         subject='Test Notificare Email',

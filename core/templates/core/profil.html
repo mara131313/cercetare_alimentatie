@@ -1,0 +1,48 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ro">
+    <head>
+        <meta name="description" content="Platforma de gestionare a datelor de cercetare in domeniul alimentatiei">
+        <title>Cercetare Alimentație</title>
+
+        {% include "fragmente/head.html" %}
+        <link rel="stylesheet" href="{% static 'resurse/css/profil.css' %}">
+    </head>
+    <body>
+        <header>
+            {% include "fragmente/header.html" %}
+        </header>
+        <main>
+            <div class="card">
+                <h2>Profil utilizator</h2>
+                <ul class="detalii-utilizator">
+                    <li><strong>👤 Utilizator:</strong> {{ utilizator.username }}</li>
+                    <li><strong>📧 Email:</strong> {{ utilizator.email }}</li>
+                    <li><strong>🔐 Rol:</strong> {{ utilizator.get_rol_display }}</li>
+                </ul>
+            </div>
+
+                <div class="card">
+                    <h3>✅ Permisiuni</h3>
+                    <ul class="permisiuni">
+                        {% for nume, permis in permisiuni.items %}
+                        <li>
+                            <span>{{ nume }}:</span>
+                            {% if permis %}
+                            <span class="perm-on">✔️ Activ</span>
+                            {% else %}
+                            <span class="perm-off">❌ Inactiv</span>
+                            {% endif %}
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+
+                <div class="actiuni">
+                    <a href="{% url 'password_reset' %}" class="btn">🔁 Resetează parola</a>
+                    <a href="{% url 'logout' %}" class="btn">🚪 Deconectare</a>
+                </div>
+        </main>
+        {% include "fragmente/footer.html" %}
+    </body>
+</html>

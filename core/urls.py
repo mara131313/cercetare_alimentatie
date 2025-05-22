@@ -3,6 +3,7 @@ from django.urls import path
 from core.views.prod_views import adauga_productie_ferma, adauga_productie_fabrica, adauga_test_calitate_ferma, adauga_test_calitate_fabrica
 from core.views.selector_views import selector_view
 from core.views.raport_views import raport_view
+from core.views.profil_views import profil_view
 
 urlpatterns = [
     path('selector/', selector_view, name='selector'),
@@ -12,6 +13,6 @@ urlpatterns = [
     path('test-calitate-ferma/', adauga_test_calitate_ferma, name='adauga_test_calitate_ferma'),
     path('success/', lambda request: render(request, 'core/success.html'), name='success'),
     path('raport/', raport_view, name='creare_raport'),
-    path('profil/', selector_view, name='profil_utilizator'),
+    path('profil/', profil_view, name='profil_utilizator'),
 
 ]
