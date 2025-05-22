@@ -92,3 +92,16 @@ def audit_view(request):
     logs = logs.order_by("-timestamp")[:100]  # cele mai recente 100
 
     return render(request, "core/audit_log.html", {"logs": logs, "query": query})
+
+from django.core.mail import send_mail
+from django.http import HttpResponse
+
+def test_email(request):
+    send_mail(
+        subject='Test Notificare Email',
+        message='Acesta este un email de test trimis din platforma Cercetare Alimentație.',
+        from_email=None,
+        recipient_list=['mara.amv13@gmail.com'],
+        fail_silently=False,
+    )
+    return HttpResponse("Email trimis cu succes!")
